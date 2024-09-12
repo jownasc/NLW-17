@@ -1,5 +1,7 @@
 const { select, input, checkbox } = require ('@inquirer/prompts')
 
+let mensagem = "Bem vindo ao App de Metas";
+
 let meta = {
     value: 'Tomar 3L de água por dia',
     checked:false,
@@ -15,6 +17,8 @@ const cadastrarMeta = async () => {
     metas.push( 
         { value: meta, checked:false}
     )
+
+    mensagem = "Meta cadastrada com Sucesso!"
 }
 
 const listarMetas = async () => {
@@ -44,7 +48,7 @@ const listarMetas = async () => {
 
     
 
-    console.log('Meta(s) concluida(s)')
+    mensagem = "Meta(s) concluida(s)"
 }
 
 const metasRealizadas = async () => {
@@ -53,7 +57,7 @@ const metasRealizadas = async () => {
     })
 
     if(realizadas.length == 0){
-        console.log ('Não existem metas realizadas.')
+        mensagem = "Não existem metas realizadas."
         return
     }
     await select({
@@ -70,7 +74,7 @@ const metasAbertas = async () => {
         return meta.checked != true
     }) 
     if(abertas.lenght == 0){
-        console.log("Não existem metas abertas!")
+        mensagem = "Não existem metas abertas!"
         return
     }
 
@@ -92,20 +96,30 @@ const deletarMetas = async () => {
     })
 
     if(itemsADeletar.length == 0){
-        console.log("Nenhum item para deletar")
+        mensagem = "Nenhum item para deletar"
     }
     itemsADeletar.forEach((item) => {
         metas = metas.filter((metas) => {
             return metas.value != item
         })
     })
-    console.log("Meta(s) deletada(s) com sucesso!")
+    mensagem = "Meta(s) deletada(s) com sucesso!"
 }
 
+const mostrarMensagem = () => {
+    console.clear();
+
+    if(mensagem != ""){
+        console.log(mensagem)
+        console.log("")
+        mensagem = ""
+    }
+}
 const start = async () => {
 
 
     while(true){
+        mostrarMensagem()
 
         const opcao = await select({
             message: "Menu >",
@@ -141,7 +155,6 @@ const start = async () => {
         switch(opcao){
             case "cadastrar":
                 await cadastrarMeta()
-                console.log(metas)
                 break
             case "listar":
                 await listarMetas()                
