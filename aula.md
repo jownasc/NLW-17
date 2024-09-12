@@ -1,5 +1,9 @@
 Algoritmo
-
+# Operadores
+[x] Rest
+# Arrays
+[x] Uma lista que contém qualquer tipo de dado
+[x] Métodos de Array
 # Operadores
 [x] Operador de comparação: Igual (==), Diferente (!=), Maior (>), Menor (<), Menor igual/Maior Igual (>= <=)
 # Estrutura de Repetição
