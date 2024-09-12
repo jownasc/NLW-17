@@ -5,3 +5,4 @@
     - [x] Marcar/desmarcar metas como concluída
     - [x] Remover metas
     - [x] Sistema de Mensagens
+    - [x] Persistir Dados (Sistema de carregar e salvar metas em arquivo json)
